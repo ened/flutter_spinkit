@@ -32,6 +32,7 @@ class ShowCase extends StatelessWidget {
                 color: Colors.white, type: SpinKitWaveType.center),
             const SpinKitWave(color: Colors.white, type: SpinKitWaveType.end),
             const SpinKitThreeBounce(color: Colors.white),
+            const SpinKitThreeInOut(color: Colors.white),
             const SpinKitWanderingCubes(color: Colors.white),
             const SpinKitWanderingCubes(
                 color: Colors.white, shape: BoxShape.circle),
