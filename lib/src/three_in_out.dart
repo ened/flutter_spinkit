@@ -49,9 +49,10 @@ class _SpinKitThreeInOutState extends State<SpinKitThreeInOut>
       ),
     );
 
-    _controller = (widget.controller ??
-        AnimationController(vsync: this, duration: widget.duration))
-      ..forward();
+    _controller = widget.controller ??
+        AnimationController(vsync: this, duration: widget.duration);
+
+    _controller.forward();
 
     _controller.addListener(() {
       if (_lastAnim > _controller.value) {
@@ -68,7 +69,9 @@ class _SpinKitThreeInOutState extends State<SpinKitThreeInOut>
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller?.dispose();
+    _controller = null;
+
     super.dispose();
   }
 
