@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -34,6 +36,8 @@ class _SpinKitThreeInOutState extends State<SpinKitThreeInOut>
 
   List<Widget> _widgets;
 
+  Timer _forwardTimer;
+
   double _lastAnim = 0;
 
   @override
@@ -62,7 +66,7 @@ class _SpinKitThreeInOutState extends State<SpinKitThreeInOut>
       _lastAnim = _controller.value;
 
       if (_controller.isCompleted) {
-        Future.delayed(widget.delay, () => _controller?.forward(from: 0));
+        _forwardTimer = Timer(widget.delay, () => _controller?.forward(from: 0));
       }
     });
   }
@@ -71,6 +75,8 @@ class _SpinKitThreeInOutState extends State<SpinKitThreeInOut>
   void dispose() {
     _controller?.dispose();
     _controller = null;
+
+    _forwardTimer?.cancel();
 
     super.dispose();
   }
